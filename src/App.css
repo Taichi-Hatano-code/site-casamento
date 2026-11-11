@@ -14,10 +14,20 @@ html, body, #root {
   font-family: 'Montserrat', sans-serif;
 }
 
+.app-container {
+  width: 100vw;
+  height: 100vh;
+  max-width: 1080px; /* Alinha com telas 1080p */
+  margin: 0 auto;
+  background: #0b1d3a;
+  overflow: hidden;
+  position: relative;
+}
+
 /* --- TÍTULOS E TIPOGRAFIA --- */
 .titulo-casamento {
   font-family: 'Great Vibes', cursive;
-  font-size: 4.8rem;
+  font-size: 4.2rem;
   margin: 0;
   color: #ffffff;
   line-height: 1.1;
@@ -25,50 +35,35 @@ html, body, #root {
 
 .titulo-casamento-e {
   font-family: 'Great Vibes', cursive;
-  font-size: 3rem;
-  margin: 5px 0;
-  color: #d4af37; /* Destaque dourado no & */
-}
-
-.divisor-elegante {
-  width: 60px;
-  height: 2px;
-  background: #d4af37;
-  margin: 20px auto;
-  border-radius: 2px;
-}
-
-.titulo-secao {
-  font-family: 'Great Vibes', cursive;
-  font-size: 3.8rem;
-  margin: 0 0 15px 0;
-  color: #0b1d3a; /* Tom escuro para fundo claro */
-  text-align: center;
+  font-size: 2.5rem;
+  margin: 2px 0;
+  color: #d4af37;
 }
 
 .subtitulo {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #e0e6ed;
   letter-spacing: 4px;
   text-transform: uppercase;
-  margin-top: 10px;
+  margin-top: 8px;
   font-weight: 300;
 }
 
 .overlay-conteudo {
-  padding: 30px 20px;
+  padding: 15px;
   text-align: center;
   width: 100%;
-  max-width: 650px;
+  max-width: 500px;
 }
 
-/* --- CARDS DE VERSÍCULO (ESTILO VAPORIZADO / CLEAN) --- */
+/* --- CARDS DE VERSÍCULO --- */
 .card-versiculo {
   background: rgba(255, 255, 255, 0.95);
-  padding: 30px 40px;
+  padding: 24px 28px;
   border-radius: 20px;
-  max-width: 550px;
-  margin: 0 20px;
+  max-width: 450px;
+  width: 90%;
+  margin: 0 auto;
   text-align: center;
   border: 1px solid rgba(212, 175, 55, 0.4);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
@@ -76,21 +71,20 @@ html, body, #root {
 
 .card-versiculo .texto-versiculo {
   font-family: 'Great Vibes', cursive;
-  font-size: 2.3rem;
+  font-size: 2rem;
   color: #0b1d3a;
-  margin: 0 0 12px 0;
-  line-height: 1.3;
+  margin: 0 0 10px 0;
+  line-height: 1.25;
 }
 
 .card-versiculo .referencia-biblia {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: #b8860b;
   letter-spacing: 2px;
   text-transform: uppercase;
   font-weight: 600;
 }
 
-/* Variante escura para transição em fundo claro */
 .card-versiculo-dark {
   background: #0b1d3a;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -100,15 +94,30 @@ html, body, #root {
   color: #ffffff;
 }
 
+/* --- FOTO DO CASAL --- */
+.container-foto-casal {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-foto-casal img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* --- BOTÃO DE CONFIRMAÇÃO --- */
 .btn-confirmar {
   display: inline-block;
-  margin-top: 25px;
-  padding: 16px 36px;
+  margin-top: 15px;
+  padding: 14px 30px;
   font-family: 'Montserrat', sans-serif;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   font-weight: 600;
-  letter-spacing: 2.5px;
+  letter-spacing: 2px;
   text-transform: uppercase;
   color: #0b1d3a;
   text-decoration: none;
@@ -122,67 +131,93 @@ html, body, #root {
   background: #d4af37;
   color: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(212, 175, 55, 0.4);
 }
 
-/* --- SEÇÃO DE ENDEREÇO & MAPA --- */
+/* --- SEÇÃO DE ENDEREÇO & MAPA & PIX --- */
+.secao-pix {
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+.titulo-pix {
+  font-size: 2rem !important;
+  margin-bottom: 4px !important;
+}
+
+.subtexto-pix {
+  font-size: 0.8rem;
+  opacity: 0.8;
+  color: #ffffff;
+  margin: 0 0 10px 0;
+}
+
 .secao-endereco {
-  margin-top: 2.5rem;
+  margin-top: 1.5rem;
   text-align: center;
 }
 
 .titulo-endereco {
   font-family: 'Great Vibes', cursive;
-  font-size: 3.5rem;
+  font-size: 3rem;
   font-weight: 400;
   color: #ffffff;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
 }
 
 .texto-endereco {
   display: inline-block;
-  margin: 10px 0 20px 0;
-  padding: 14px 24px;
+  margin: 6px 0 12px 0;
+  padding: 10px 18px;
   font-family: 'Montserrat', sans-serif;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   font-weight: 400;
-  line-height: 1.6;
-  letter-spacing: 1px;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
   color: #ffffff;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 16px;
+  border-radius: 12px;
+}
+
+.texto-chave-pix span {
+  user-select: all;
+  word-break: break-all;
+}
+
+.img-pix {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+  border-radius: 12px;
+  margin: 6px 0;
+  border: 2px solid #fff;
 }
 
 .container-mapa {
   width: 100%;
-  max-width: 550px;
+  max-width: 450px;
   margin: 0 auto;
-  border-radius: 16px;
+  border-radius: 14px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  border: 2px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 /* --- ÁLBUM VERTICAL --- */
 .container-galeria {
   width: 100%;
-  max-width: 420px;
+  max-width: 380px;
   margin: 0 auto;
-  padding: 10px;
-}
-
-.swiper-album {
-  padding-bottom: 45px !important;
+  padding: 5px;
 }
 
 .card-foto-vertical {
   width: 100%;
-  height: 380px;
-  border-radius: 20px;
+  height: 340px;
+  border-radius: 16px;
   overflow: hidden;
-  border: 4px solid #ffffff;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  border: 3px solid #ffffff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
 .card-foto-vertical img {
@@ -191,26 +226,10 @@ html, body, #root {
   object-fit: cover;
 }
 
-.swiper-button-next,
-.swiper-button-prev {
-  color: #0b1d3a !important;
-  transform: scale(0.65);
-}
-
-.swiper-pagination-bullet {
-  background: rgba(11, 29, 58, 0.3) !important;
-}
-
-.swiper-pagination-bullet-active {
-  background: #0b1d3a !important;
-  width: 14px;
-  border-radius: 6px;
-}
-
 /* --- BALÕES --- */
 .balloon-img {
   position: absolute;
-  width: 65px;
+  width: 50px;
   height: auto;
   filter: drop-shadow(0px 8px 15px rgba(0,0,0,0.25));
   animation: float 4s ease-in-out infinite alternate;
@@ -218,5 +237,29 @@ html, body, #root {
 
 @keyframes float {
   0% { transform: translateY(0px) rotate(-3deg); }
-  100% { transform: translateY(-20px) rotate(3deg); }
+  100% { transform: translateY(-15px) rotate(3deg); }
+}
+
+/* --- REGRAS ESPECÍFICAS PARA A PROPORÇÃO 1080x1920 --- */
+@media (max-width: 1080px) and (max-aspect-ratio: 9/16) {
+  .titulo-casamento {
+    font-size: 3rem;
+  }
+  
+  .titulo-confirmar {
+    font-size: 2.8rem;
+  }
+
+  .card-versiculo .texto-versiculo {
+    font-size: 1.6rem;
+  }
+
+  .img-pix {
+    width: 120px;
+    height: 120px;
+  }
+
+  .card-foto-vertical {
+    height: 300px;
+  }
 }
