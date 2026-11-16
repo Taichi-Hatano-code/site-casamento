@@ -26,6 +26,14 @@ const listaFotos = [a, b, c, d, e, f, g]
 function App() {
   const [isMobile, setIsMobile] = useState(false)
 
+  // Lógica da Contagem Regressiva para 04/03/2027 às 18:00 (AGORA DENTRO DO APP)
+  const [tempoRestante, setTempoRestante] = useState({
+    dias: 0,
+    horas: 0,
+    minutos: 0,
+    segundos: 0,
+  })
+
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768)
@@ -35,14 +43,38 @@ function App() {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
+  useEffect(() => {
+    // Mês em JS começa do 0 (0 = Jan, 1 = Fev, 2 = Mar)
+    const dataCasamento = new Date(2027, 2, 4, 18, 0, 0).getTime()
+
+    const intervalo = setInterval(() => {
+      const agora = new Date().getTime()
+      const diferenca = dataCasamento - agora
+
+      if (diferenca <= 0) {
+        clearInterval(intervalo)
+        setTempoRestante({ dias: 0, horas: 0, minutos: 0, segundos: 0 })
+      } else {
+        setTempoRestante({
+          dias: Math.floor(diferenca / (1000 * 60 * 60 * 24)),
+          horas: Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+          minutos: Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60)),
+          segundos: Math.floor((diferenca % (1000 * 60)) / 1000),
+        })
+      }
+    }, 1000)
+
+    return () => clearInterval(intervalo)
+  }, [])
+
   return (
     <div className="app-container">
       {/* 
         Ajuste do total de páginas da rolagem: 
         Proporção 1080x1920 exige distribuição mais equilibrada de offsets.
       */}
-      <Parallax pages={isMobile ? 6.7 : 5.2}>
 
+      <Parallax pages={isMobile ? 7.3 : 5.8}>
         {/* --- METADE DE CIMA DA CARTA --- */}
         <ParallaxLayer
           offset={0}
@@ -217,7 +249,7 @@ function App() {
               </div>
 
               <p className="texto-endereco texto-chave-pix">
-                Chave Pix: <span>suachavepixaqui@exemplo.com</span>
+                Chave Pix: <span>sjayanne80@gmail.com</span>
               </p>
             </div>
 
@@ -229,6 +261,40 @@ function App() {
                 Data: 04/03/2027, às 18 horas
               </p>
               
+              {/* --- CONTAGEM REGRESSIVA --- */}
+              <div className="secao-contagem" style={{ width: '100%', marginTop: '25px', marginBottom: '25px' }}>
+                <h2 className="titulo-endereco" style={{ textAlign: 'center', marginBottom: '12px' }}>
+                  Contagem Regressiva
+                </h2>
+                
+                <div style={{ 
+                  display: 'flex', 
+                  justifyContent: 'space-around', 
+                  gap: '8px',
+                  backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                  padding: '15px 10px',
+                  borderRadius: '12px',
+                  border: '1px solid rgba(255, 255, 255, 0.15)',
+                  boxShadow: '0 4px 15px rgba(0,0,0,0.2)'
+                }}>
+                  {[
+                    { valor: tempoRestante.dias, label: 'Dias' },
+                    { valor: tempoRestante.horas, label: 'Horas' },
+                    { valor: tempoRestante.minutos, label: 'Min' },
+                    { valor: tempoRestante.segundos, label: 'Seg' },
+                  ].map((item, index) => (
+                    <div key={index} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minWidth: '55px' }}>
+                      <span style={{ fontSize: '1.6rem', fontWeight: 'bold', color: '#f8f6f0' }}>
+                        {String(item.valor).padStart(2, '0')}
+                      </span>
+                      <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '1px', color: '#d4af37', marginTop: '4px' }}>
+                        {item.label}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
               <div className="container-mapa">
                 <iframe
                   title="Mapa do Local"
